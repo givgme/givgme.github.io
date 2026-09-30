@@ -146,6 +146,8 @@ h3.sub i{width:20px;height:20px;display:block}
 @media (max-width:880px){.links{grid-template-columns:minmax(0,1fr)}.lk:nth-child(odd){border-right:0;padding-right:4px}.lk:nth-child(even){padding-left:4px}}
 
 /* CONTACTO */
+.cmsg{display:grid;gap:14px}
+.cmsg p{font-size:1.1rem;opacity:.85}
 .contact{background:var(--ink);color:var(--paper)}
 .contact .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);padding-block:clamp(48px,7vw,88px);align-items:center}
 .contact h2{font-size:clamp(2rem,5vw,3.8rem);font-weight:800}
@@ -348,7 +350,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
 <section class="contact" id="contacto">
   <div class="wrap">
-    <h2>Hagamos ciencia <span>juntas.</span></h2>
+    <div class="cmsg"><h2>Ciencia, arte y cultura <span>para todas las personas.</span></h2><p>Acceso, equidad y perspectiva de género en una sola mirada.</p></div>
     <div class="cbox">
       <div class="crow"><span class="v" id="mail">givg@azc.uam.mx</span><button type="button" id="copy">Copiar</button></div>
       <div class="crow"><span>Laboratorio de Física Aplicada a la Existencia</span><a href="https://www.facebook.com/LFAE.UAMA" target="_blank" rel="noopener">Facebook ↗</a></div>
