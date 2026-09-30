@@ -1,3 +1,7 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gabriela Vera Garfias</title>
 <meta name="description" content="Gabriela Isabel Vera Garfias — ingeniera física, divulgadora y gestora científico-cultural. Coordinadora del Laboratorio de Física Aplicada a la Existencia (LFAE), UAM Azcapotzalco.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +67,12 @@ nav a:hover{text-decoration:underline}
 .comp svg{width:100%;height:100%;display:block}
 .spin{transform-origin:300px 250px;animation:turn 60s linear infinite}
 @keyframes turn{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+/* cuadrado y triángulo flotan despacio, desfasados: entran al juego en vez de pesar */
+.flota{animation:flota 9s ease-in-out infinite alternate}
+.flota.b{animation-duration:11s;animation-delay:-4s}
+@keyframes flota{from{transform:translateY(-7px)}to{transform:translateY(7px)}}
+.astro{fill:var(--ink)}
+@media (prefers-reduced-motion:reduce){.spin,.flota{animation:none}.orbita-mov{display:none}}
 
 /* CIFRAS */
 .bar{border-block:3px solid var(--line)}
@@ -89,7 +98,7 @@ section.block{padding-block:clamp(48px,7vw,96px)}
 .about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
 .about p+p{margin-top:16px}
 .quote{border:3px solid var(--line);padding:24px;align-self:start;background:var(--card);position:relative}
-.quote::before{content:"";position:absolute;top:-3px;left:-3px;width:40px;height:40px;background:var(--yellow)}
+.quote::before{content:"";position:absolute;top:-20px;left:max(-20px,calc(2px - var(--gut)));width:40px;height:40px;border-radius:50%;background:var(--yellow)}  /* punto centrado en la esquina */
 .quote p{font-family:var(--display);font-size:1.4rem;line-height:1.25;font-weight:700;position:relative}
 
 /* LFAE */
@@ -102,11 +111,44 @@ section.block{padding-block:clamp(48px,7vw,96px)}
 .lfae li:last-child{border-bottom:2px solid currentColor}
 .lfae li span:last-child{font-family:var(--mono);font-size:.8rem;opacity:.85;white-space:nowrap}
 
+/* LFAE · registro de actividades por año (plegable en celular y escritorio) */
+.reg{margin-top:clamp(40px,6vw,64px)}
+.reg-t{font-family:var(--body);font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:1.3rem}
+.reg>.mono{margin:6px 0 18px;opacity:.85}
+.reg details{border-top:2px solid currentColor}
+.reg details:last-child{border-bottom:2px solid currentColor}
+.reg summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:16px;padding:12px 0}
+.reg summary::-webkit-details-marker{display:none}
+.reg summary::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--yellow);flex:none;transform:translateY(-1px)}
+.reg details[open] summary::before{background:var(--on-accent)}
+.ry{font-family:var(--display);font-size:1.5rem;font-weight:700;line-height:1}
+.rn{font-family:var(--mono);font-size:.78rem;opacity:.8}
+.reg ul{list-style:none;margin:0 0 14px;padding:0;display:block}
+.reg li{display:grid;grid-template-columns:5.5rem minmax(0,1fr) auto;gap:14px;align-items:baseline;border-top:1px solid color-mix(in srgb,currentColor 35%,transparent);padding:9px 0;font-size:.97rem}
+.reg li:last-child{border-bottom:0}
+.rd{font-family:var(--mono);font-size:.8rem;white-space:nowrap;opacity:.85}
+.rl{display:flex;gap:14px;white-space:nowrap}
+.rl a{font-weight:600;font-size:.9rem}
+.rl:empty{display:none}
+@media (max-width:620px){.reg li{grid-template-columns:4.2rem minmax(0,1fr)}.rl{grid-column:2;flex-wrap:wrap}}
+
 /* PROYECTOS */
-.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:3px solid var(--line)}
-.proj{padding:26px 22px;border-right:3px solid var(--line);border-bottom:3px solid var(--line);display:flex;flex-direction:column;gap:10px;min-width:0}
-.proj:nth-child(3n){border-right:0}
-.proj:nth-last-child(-n+3){border-bottom:0}
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;background:var(--line);border:3px solid var(--line)}
+.proj{padding:26px 22px;background:var(--paper);display:flex;flex-direction:column;gap:10px;min-width:0}
+/* jerarquía: principal (dos columnas, masa de color) > ancha (dos columnas) > ficha normal */
+.proj.principal,.proj.ancha{grid-column:span 2}
+.proj.principal{padding:34px 30px}
+.proj.principal h3{font-size:clamp(1.6rem,2.6vw,2.1rem)}
+.proj.ancha h3{font-size:1.6rem}
+.proj.principal p,.proj.ancha p{font-size:1.05rem;max-width:56ch}
+.proj.roja{background:var(--red);color:var(--on-accent)}
+.proj.amarilla{background:var(--yellow);color:#151515}
+.proj.principal p{color:inherit;opacity:.92}
+.proj.principal .k i{background:currentColor!important;border-radius:50%!important;clip-path:none!important}
+.proj .vel-sub{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.85!important;margin-top:-4px}
+.vel-serie{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.vel-serie li{border:2px solid currentColor;padding:3px 10px;font-weight:600;font-size:.9rem}
+.proj .gana{align-self:start;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;background:#151515;color:#F7F6F2;padding:3px 8px}
 .proj .k{display:flex;align-items:center;gap:10px}
 .proj .k i{width:18px;height:18px;flex:none}
 .proj:nth-child(3n+1) .k i{background:var(--red)}
@@ -114,6 +156,44 @@ section.block{padding-block:clamp(48px,7vw,96px)}
 .proj:nth-child(3n) .k i{background:var(--yellow);clip-path:polygon(50% 0,100% 100%,0 100%)}
 .proj h3{font-size:1.35rem;font-weight:700}
 .proj p{color:var(--ink-soft);font-size:.98rem}
+
+/* UMBRHALIA: proyecto independiente con identidad propia (negro, blanco y un solo rojo), igual en tema claro y oscuro */
+.umbra{--u-red:#E5463B;background:#0E0E0F;color:#E7E7EA}
+.umbra .head .mono{color:#E7E7EA;opacity:.75}
+.umbra .head h2{letter-spacing:.14em}
+.u-marca{width:56px;height:56px;display:block}
+.u-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start}
+.u-grid p+p{margin-top:16px}
+.u-lead{font-size:1.2rem;line-height:1.5}
+.u-lead em{font-style:normal;color:var(--u-red)}
+.u-piezas{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.u-piezas li{border-top:1px solid #3A3A3D;padding:12px 16px 12px 0;display:flex;gap:12px;align-items:baseline;font-size:.97rem}
+.u-piezas li::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--u-red);transform:translateY(-1px)}
+.u-fig{margin:0;border:1px solid #3A3A3D;padding:clamp(18px,3vw,32px);display:grid;gap:14px;justify-items:center}
+.u-ohr{width:100%;max-width:340px;height:auto;display:block;color:#E7E7EA}
+.u-fig figcaption{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75;text-align:center}
+.u-cta{display:inline-flex;gap:10px;align-items:center;margin-top:28px;padding:10px 18px;border:2px solid #E7E7EA;text-decoration:none;font-weight:600}
+.u-cta:hover{background:#E7E7EA;color:#0E0E0F}
+.umbra a:focus-visible{outline-color:var(--u-red)}
+@media (max-width:880px){.u-grid{grid-template-columns:minmax(0,1fr)}.u-fig{order:-1}}
+@media (max-width:520px){.u-piezas{grid-template-columns:minmax(0,1fr)}.u-marca{width:40px;height:40px}}
+
+/* CATÁLOGO: retícula Mondrian; las líneas son el fondo que asoma entre celdas */
+.cat{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(9,clamp(110px,13vw,168px));gap:6px;background:var(--line);border:6px solid var(--line)}
+.cat figure{margin:0;position:relative;overflow:hidden;background:var(--card);min-width:0}
+.cat img{width:100%;height:100%;object-fit:cover;display:block}
+.cat figcaption{position:absolute;left:10px;bottom:10px;width:fit-content;max-width:calc(100% - 20px);background:var(--ink);color:var(--paper);padding:6px 10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.35}
+.cat figcaption b{font-family:var(--body);font-weight:600;letter-spacing:.04em}
+.cat .f{background:var(--red)}
+.cat .f.y{background:var(--yellow)}
+.cat .f.b{background:var(--blue)}
+@media (max-width:880px){
+  .cat{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:170px;grid-auto-flow:dense}
+  .cat>*{grid-area:auto!important}
+  .cat .big{grid-column:span 2!important;grid-row:span 2!important}
+  .cat .f{display:none}
+  .cat figcaption{left:6px;bottom:6px;max-width:calc(100% - 12px);padding:4px 7px;font-size:.6rem;line-height:1.3}
+}
 
 /* TRAYECTORIA */
 .tl{display:grid;gap:0;border-left:3px solid var(--line);margin-left:8px}
@@ -127,14 +207,22 @@ section.block{padding-block:clamp(48px,7vw,96px)}
 /* RECONOCIMIENTOS + FORMACIÓN */
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,56px)}
 .list{list-style:none;margin:0;padding:0}
-.list li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:14px 0;border-top:2px solid var(--line)}
+.list li{display:grid;grid-template-columns:6.4rem minmax(0,1fr);gap:16px;padding:14px 0;border-top:2px solid var(--line)}
 .list li:last-child{border-bottom:2px solid var(--line)}
-.list .y{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--red);font-weight:500}
+.list .y{white-space:nowrap;font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--red);font-weight:500}
 h3.sub{font-family:var(--body);font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:1.3rem;margin-bottom:16px;display:flex;align-items:center;gap:10px}
 h3.sub i{width:20px;height:20px;display:block}
 
 
 /* ENLACES */
+/* publicación destacada */
+.pub-dest{border:3px solid var(--line);border-left:14px solid var(--red);padding:26px 28px;margin-bottom:28px;display:grid;gap:10px;background:var(--card)}
+.pub-dest .gana{justify-self:start;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;background:var(--red);color:var(--on-accent);padding:3px 8px}
+.pub-dest h3{font-size:clamp(1.5rem,3vw,2.2rem)}
+.pub-dest p{color:var(--ink-soft)}
+.pub-links{display:flex;gap:22px;flex-wrap:wrap;margin-top:4px}
+.pub-links a{font-weight:600;color:var(--blue)}
+
 .links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:3px solid var(--line)}
 .lk{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:16px 4px;border-bottom:2px solid var(--line);text-decoration:none;min-width:0}
 .lk:nth-child(odd){border-right:2px solid var(--line);padding-right:18px}
@@ -165,8 +253,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   .hero .wrap,.about,.lfae-grid,.two,.contact .wrap{grid-template-columns:minmax(0,1fr)}
   .comp{justify-self:center;max-width:380px}
   .projects{grid-template-columns:minmax(0,1fr)}
-  .proj{border-right:0!important;border-bottom:3px solid var(--line)!important}
-  .proj:last-child{border-bottom:0!important}
+  .proj.principal,.proj.ancha{grid-column:auto}
   .bar .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fig:nth-child(3){border-left:0;padding-left:0}
   .fig:nth-child(n+3){border-top:3px solid var(--line)}
@@ -188,6 +275,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <li><a href="#sobre">Sobre mí</a></li>
         <li><a href="#lfae">LFAE</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#umbrhalia">Umbrhalia</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
         <li><a href="#trayectoria">Trayectoria</a></li>
         <li><a href="#enlaces">Enlaces</a></li>
         <li><a href="#contacto">Contacto</a></li>
@@ -209,8 +298,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     </div>
     <div class="comp" aria-hidden="true">
       <svg viewBox="0 0 600 600" role="img">
-        <rect x="70" y="330" width="210" height="210" fill="var(--red)"/>
-        <polygon points="330,70 560,470 100,470" fill="var(--yellow)" opacity=".95"/>
+        <!-- estrellas -->
+        <g class="astro">
+          <circle cx="62" cy="210" r="3"/><circle cx="170" cy="58" r="2.5"/><circle cx="548" cy="250" r="3"/>
+          <circle cx="400" cy="560" r="2.5"/><circle cx="300" cy="40" r="2"/><circle cx="560" cy="390" r="2"/>
+        </g>
+        <!-- cuadrado y triángulo, más ligeros y flotando -->
+        <g class="flota"><rect x="96" y="372" width="136" height="136" fill="var(--red)"/></g>
+        <g class="flota b"><polygon points="360,150 528,442 192,442" fill="var(--yellow)" opacity=".95"/></g>
+        <!-- órbitas inclinadas alrededor del disco -->
+        <g transform="rotate(-18 300 250)" fill="none" stroke="var(--ink)">
+          <path id="orb1" d="M68,250 A232,92 0 1 0 532,250 A232,92 0 1 0 68,250 Z" stroke-width="2"/>
+          <path id="orb2" d="M114,250 A186,62 0 1 0 486,250 A186,62 0 1 0 114,250 Z" stroke-width="1.5" stroke-dasharray="2 9" stroke-linecap="round"/>
+        </g>
+        <!-- disco que gira como un reloj -->
         <g class="spin">
           <circle cx="300" cy="250" r="150" fill="var(--blue)"/>
           <circle cx="300" cy="250" r="104" fill="none" stroke="var(--paper)" stroke-width="10"/>
@@ -218,15 +319,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           <circle cx="300" cy="250" r="22" fill="var(--yellow)"/>
           <line x1="140" y1="250" x2="460" y2="250" stroke="var(--paper)" stroke-width="3"/>
         </g>
+        <!-- mitad delantera de la órbita grande: pasa por encima del disco -->
+        <path d="M68,250 A232,92 0 0 0 532,250" transform="rotate(-18 300 250)" fill="none" stroke="var(--ink)" stroke-width="2"/>
+        <!-- planeta rojo y luna amarilla recorriendo sus órbitas -->
+        <g class="orbita-mov" transform="rotate(-18 300 250)">
+          <circle r="15" fill="var(--red)" stroke="var(--paper)" stroke-width="3">
+            <animateMotion dur="24s" repeatCount="indefinite" rotate="0"><mpath href="#orb1"/></animateMotion>
+          </circle>
+          <circle r="8" fill="var(--yellow)" stroke="var(--ink)" stroke-width="2">
+            <animateMotion dur="15s" begin="-6s" repeatCount="indefinite" rotate="0"><mpath href="#orb2"/></animateMotion>
+          </circle>
+        </g>
+        <!-- planeta con anillo, donde antes estaba la banderita -->
+        <circle cx="444" cy="80" r="28" fill="var(--ink)"/>
+        <ellipse cx="444" cy="80" rx="50" ry="12" fill="none" stroke="var(--yellow)" stroke-width="5" transform="rotate(-22 444 80)"/>
+        <path d="M416,80 a28,28 0 0 0 56,0" fill="var(--ink)" transform="rotate(-22 444 80)"/>
         <line x1="40" y1="560" x2="560" y2="40" stroke="var(--ink)" stroke-width="6"/>
-        <line x1="40" y1="120" x2="330" y2="580" stroke="var(--ink)" stroke-width="2"/>
         <circle cx="500" cy="530" r="34" fill="none" stroke="var(--ink)" stroke-width="6"/>
         <circle cx="96" cy="96" r="18" fill="var(--red)"/>
-        <g fill="var(--ink)">
-          <rect x="430" y="70" width="18" height="18"/><rect x="466" y="70" width="18" height="18"/>
-          <rect x="448" y="88" width="18" height="18"/><rect x="484" y="88" width="18" height="18"/>
-          <rect x="430" y="106" width="18" height="18"/><rect x="466" y="106" width="18" height="18"/>
-        </g>
         <path d="M60 470 Q 140 400 200 450 T 330 430" fill="none" stroke="var(--ink)" stroke-width="4"/>
       </svg>
     </div>
@@ -238,7 +348,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="fig"><b>10</b><span>años de divulgación continua (2016–2026)</span></div>
     <div class="fig"><b>100+</b><span>charlas y talleres impartidos</span></div>
     <div class="fig"><b>20+</b><span>congresos nacionales e internacionales</span></div>
-    <div class="fig"><b>1.ª</b><span>Fundadora del primer festival científico con perspectiva de género en Tizayuca: Sihuatl 2022</span></div>
+    <div class="fig"><b>1.ª</b><span>Coordinadora y proponente del primer festival científico con perspectiva de género en Tizayuca: Sihuatl 2022</span></div>
   </div>
 </div>
 
@@ -252,7 +362,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <p>Actualmente soy representante estudiantil de los posgrados de la División de Ciencias y Artes para el Diseño ante el Consejo Académico de la UAM Azcapotzalco y ante el Colegio Académico de la UAM.</p>
         <p>Me formé como becaria en el Museo de la Luz de la UNAM, fui mentora en la iniciativa Iluminando el Futuro de la IEEE y formé parte de la iniciativa Mujeres Hacia el Espacio de la Agencia Espacial Mexicana.</p>
       </div>
-      <div class="quote"><p>La ciencia se apropia cuando llega en un lenguaje cercano y culturalmente significativo.</p></div>
+      <div class="quote"><p>La ciencia se apropia cuando llega en una experiencia culturalmente significativa y cercana.</p></div>
     </div>
   </div>
 </section>
@@ -263,12 +373,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="lfae-grid">
       <p>El LFAE es un proyecto interdisciplinario que integra ciencia, arte, filosofía, historia y cultura. Llevamos la física a los patios, los museos, las bibliotecas y las esculturas del campus, y la convertimos en una experiencia compartida.</p>
       <ul>
-        <li><span>Veladas Escultóricas y Astronómicas</span><span>2024 – hoy</span></li>
+        <li><span>Veladas Escultóricas y Astronómicas</span><span>2023 – hoy</span></li>
         <li><span>Proyecto Eclipse Solar 2023–2024</span><span>2023 – 2024</span></li>
         <li><span>Semana Mundial del Espacio</span><span>anual</span></li>
         <li><span>Club de lectura «Historias de aquí y ninguna parte»</span><span>desde 2023</span></li>
         <li><span>Maridajes científicos</span><span>2024</span></li>
       </ul>
+    </div>
+    <div class="reg">
+      <h3 class="reg-t">Registro de actividades</h3>
+      <p class="mono">2022 – 2026 · difusión y evidencias</p>
+      <details open><summary><span class="ry">2026</span><span class="rn">5 actividades</span></summary><ul><li><span class="rd">29 ene</span><span><b>Veladas Escultóricas</b> · <i>Katún</i>, Brian Nissen</span><span class="rl"><a href="https://www.facebook.com/share/p/18Qnuoev8c/" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">25 feb</span><span><b>Tarde y Noche de Museo</b> · UAM Azcapotzalco</span><span class="rl"></span></li><li><span class="rd">·</span><span><b>Eclipse lunar total</b> · Observación</span><span class="rl"><a href="https://www.facebook.com/share/p/1QaDRqQHFJ/" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">25 mar</span><span><b>Veladas Escultóricas</b> · <i>Uróboros</i>, Yvonne Domenge</span><span class="rl"><a href="https://www.facebook.com/share/p/18XGwAK5Bq/" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">25 mar</span><span><b>Conversatorio musical contra la violencia</b> · Con She No More</span><span class="rl"></span></li></ul></details><details><summary><span class="ry">2025</span><span class="rn">8 actividades</span></summary><ul><li><span class="rd">13 mar</span><span><b>Veladas Escultóricas</b> · <i>Estructura de Aire</i>, Irma Palacios · eclipse lunar total</span><span class="rl"></span></li><li><span class="rd">15 abr</span><span><b>Día Mundial del Arte</b></span><span class="rl"><a href="https://www.facebook.com/photo/?fbid=1067438665414477&amp;set=a.478518687639814" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">20 jun</span><span><b>Veladas Escultóricas</b> · <i>Habitaciones de Luz</i>, Guadalupe Ojeda</span><span class="rl"><a href="https://www.facebook.com/photo/?fbid=1120557523435924&amp;set=a.478518687639814" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">3 oct</span><span><b>Veladas Astronómicas</b> · Semana Mundial del Espacio</span><span class="rl"><a href="https://www.facebook.com/photo/?fbid=769560636069254&amp;set=a.156031450755512" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">9 oct</span><span><b>Ciencia en el Jardín</b> · ¿De qué va el Premio Nobel de Física 2025?</span><span class="rl"><a href="https://www.facebook.com/lfae.physicart/posts/776178962074088" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">28 oct</span><span><b>Spooky Picnic</b></span><span class="rl"><a href="https://www.facebook.com/lfae.physicart/posts/792634260428558" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">5 nov</span><span><b>Observación por telescopio</b> · Superluna</span><span class="rl"><a href="https://www.facebook.com/lfae.physicart/posts/pfbid024BFgszSshCQV4nir2NRvSibhyKR2gGqN5T3jkJsJxKoNMj211G543yKiGsp2ZyqWl" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">26 nov</span><span><b>Veladas Escultóricas</b> · <i>Estructura Orgánica</i>, Gabriel Macotela</span><span class="rl"><a href="https://www.facebook.com/photo/?fbid=1255034156654926&amp;set=a.478518697639813" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li></ul></details><details><summary><span class="ry">2024</span><span class="rn">3 actividades</span></summary><ul><li><span class="rd">3 oct</span><span><b>Veladas Escultóricas</b> · <i>Casa Abierta al Tiempo</i>, Sebastián</span><span class="rl"><a href="https://www.facebook.com/photo/?fbid=925026216322390&amp;set=a.478518687639814" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">31 oct</span><span><b>Veladas Escultóricas</b> · <i>Pérgola Animada</i>, Gilberto Aceves Navarro</span><span class="rl"><a href="https://www.facebook.com/photo/?fbid=946873984137613&amp;set=a.478518697639813" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">18 dic</span><span><b>Veladas Escultóricas</b> · <i>Primera Letra</i>, Vicente Rojo</span><span class="rl"><a href="https://www.facebook.com/photo/?fbid=981495507342127&amp;set=a.478518697639813" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li></ul></details><details><summary><span class="ry">2023</span><span class="rn">7 actividades</span></summary><ul><li><span class="rd">31 ene</span><span><b>Visita al MAM</b> · Vicente Rojo</span><span class="rl"><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/546006704224345" target="_blank" rel="noopener">Difusión <span aria-hidden="true">↗</span></a><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/549564600535222" target="_blank" rel="noopener">Registro <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">22 feb</span><span><b>Jornadas Galileanas</b></span><span class="rl"><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/564712075687141" target="_blank" rel="noopener">Difusión <span aria-hidden="true">↗</span></a><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/566082865550062" target="_blank" rel="noopener">Registro <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">10 mar</span><span><b>Resiliencia y Jacarandas</b></span><span class="rl"><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/573618011463214" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">2 jun</span><span><b>Veladas Astronómicas</b></span><span class="rl"><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/623782723113409" target="_blank" rel="noopener">Difusión <span aria-hidden="true">↗</span></a><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/626213329537015" target="_blank" rel="noopener">Registro <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">·</span><span><b>Visita al MUNAE</b> · Vicente Rojo. Retrospectiva gráfica</span><span class="rl"><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/626175266207488" target="_blank" rel="noopener">Difusión <span aria-hidden="true">↗</span></a><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/627487079409640" target="_blank" rel="noopener">Registro <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">23 ago</span><span><b>Jornadas Nacionales de Física</b> · Veladas Astronómicas</span><span class="rl"></span></li><li><span class="rd">6 sep</span><span><b>Visita al LAA</b> · Helen Escobedo</span><span class="rl"></span></li></ul></details><details><summary><span class="ry">2022</span><span class="rn">2 actividades</span></summary><ul><li><span class="rd">26 oct</span><span><b>Visita al LAA</b> · Paisajes de luz</span><span class="rl"><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/photos/a.528588137224027/5728291263920329/" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li><li><span class="rd">15–18 nov</span><span><b>FILIJ en la UAM</b></span><span class="rl"><a href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/492796586212024" target="_blank" rel="noopener">Publicación <span aria-hidden="true">↗</span></a></span></li></ul></details>
     </div>
   </div>
 </section>
@@ -277,15 +392,150 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <div class="wrap">
     <div class="head"><div class="shape t"></div><h2>Proyectos</h2><p class="mono">Selección</p></div>
     <div class="projects">
-      <article class="proj"><div class="k"><i></i><span class="mono">2024 – hoy</span></div><h3>Veladas Escultóricas</h3><p>Observación astronómica y mediación frente a las esculturas de Felguérez, Siegmann, Rojo y otros artistas en la UAM Azcapotzalco.</p></article>
-      <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Eclipse Solar</h3><p>Rutas de observación del eclipse anular de 2023 y el total de 2024, con talleres en escuelas y en la UAM.</p></article>
-      <article class="proj"><div class="k"><i></i><span class="mono">2022 · 1.ª edición</span></div><h3>Festival Sihuatl</h3><p>Fundadora y coordinadora de la primera edición: el primer festival científico con perspectiva de género en Tizayuca, Hidalgo, en el marco del Día Internacional de la Mujer y la Niña en la Ciencia.</p></article>
-      <article class="proj"><div class="k"><i></i><span class="mono">2021</span></div><h3>Tlahuilia</h3><p>Proyecto educativo STEM financiado por el SPIE Outreach Grant, desde los capítulos estudiantiles SPIE y Optica.</p></article>
-      <article class="proj"><div class="k"><i></i><span class="mono">2022 – 2025</span></div><h3>FILIJ en la UAM</h3><p>Sede de la Feria Internacional del Libro Infantil y Juvenil, con tendedero literario y actividades de ciencia y lectura.</p></article>
-      <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2026</span></div><h3>Ciencia en el Metro</h3><p>Talleres en el Museo del Metro y «La ciencia del helado» en Metro La Raza, con Comunicación del Conocimiento UAM.</p></article>
-      <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Mediaciones en museos</h3><p>Visitas mediadas al MUNAE, el MUNAL, el Museo del Estanquillo y el Museo Nacional de San Carlos con la comunidad UAM.</p></article>
-      <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Jornadas Galileanas</h3><p>Jornadas de astronomía, historia y cultura en torno a Galileo en la UAM Azcapotzalco.</p></article>
-      <article class="proj"><div class="k"><i></i><span class="mono">2024 – 2025</span></div><h3>Jornadas Nacionales de Física</h3><p>Observaciones, veladas y maridajes científicos con la Sociedad Mexicana de Física.</p></article>
+      <article class="proj principal roja"><div class="k"><i></i><span class="mono">2026 – 2027</span></div><span class="gana">Propuesta ganadora</span><h3>Arte, ciencia y cultura. El patrimonio que comunica</h3><p>Proyecto de la Convocatoria de Rectoría General para la participación del alumnado en las funciones sustantivas, con CBI, CyAD y CSH: investigación e interpretación del patrimonio escultórico, Veladas Escultóricas con observación astronómica y videomapping, recorridos interpretativos y memoria audiovisual.</p></article>
+      <article class="proj "><div class="k"><i></i><span class="mono">2016 – hoy</span></div><h3>Semana Mundial del Espacio</h3><p>Actividades anuales en la UAM Azcapotzalco desde 2016; en 2025, con Veladas Astronómicas.</p></article>
+      <article class="proj "><div class="k"><i></i><span class="mono">2022 – 2025</span></div><h3>FILIJ en la UAM</h3><p>Sede de la Feria Internacional del Libro Infantil y Juvenil, con tendedero literario y actividades de ciencia y lectura.</p></article>
+      <article class="proj principal amarilla"><div class="k"><i></i><span class="mono">2023 – hoy</span></div><h3>Veladas</h3><p class="vel-sub">Astronómicas · Galileanas · Escultóricas</p><p>Empezaron siendo astronómicas y hoy son un formato flexible con identidad propia. En las escultóricas, las más fuertes, recorremos el artista, la pieza, su narrativa y la temática que nos invita a abordar, vinculándola con la ciencia y también con la filosofía, en el marco de fechas como la Semana Mundial del Espacio, el Día de la Cultura Científica, el Día del Libro o el Día de la Luz. Después hacemos un recorrido con las personas que asisten y, a veces, picnics nocturnos con cine, micrófono abierto o lectura de cuentos.</p><ul class="vel-serie"><li>Velada del Tiempo Nuevo</li><li>Velada del Espacio Nuevo</li><li>Velada del Fuego Nuevo · 52 años de la UAM</li></ul></article>
+      <article class="proj ancha"><div class="k"><i></i><span class="mono">2022 · 1.ª edición</span></div><h3>Festival Sihuatl</h3><p>Coordinadora y proponente de la iniciativa: el primer festival científico con perspectiva de género en Tizayuca, Hidalgo, en el marco del Día Internacional de la Mujer y la Niña en la Ciencia.</p></article>
+      <article class="proj "><div class="k"><i></i><span class="mono">2023 – 2026</span></div><h3>Ciencia en el Metro</h3><p>Talleres en el Museo del Metro y «La ciencia del helado» en Metro La Raza, con Comunicación del Conocimiento UAM.</p></article>
+      <article class="proj "><div class="k"><i></i><span class="mono">2021</span></div><h3>Tlahuilia</h3><p>Proyecto educativo STEM financiado por el SPIE Outreach Grant, desde los capítulos estudiantiles SPIE y Optica.</p></article>
+      <article class="proj ancha"><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Eclipse Solar</h3><p>Rutas de observación del eclipse anular de 2023 y el total de 2024, con talleres en escuelas y en la UAM.</p></article>
+      <article class="proj "><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Mediaciones en museos</h3><p>Visitas mediadas al MUNAE, el MUNAL, el Museo del Estanquillo y el Museo Nacional de San Carlos con la comunidad UAM.</p></article>
+      <article class="proj "><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Jornadas Galileanas</h3><p>Jornadas de astronomía, historia y cultura en torno a Galileo en la UAM Azcapotzalco.</p></article>
+      <article class="proj "><div class="k"><i></i><span class="mono">2024 – 2025</span></div><h3>Jornadas Nacionales de Física</h3><p>Observaciones, veladas y maridajes científicos con la Sociedad Mexicana de Física.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block umbra" id="umbrhalia">
+  <div class="wrap">
+    <div class="head"><svg class="u-marca" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  
+  <g transform="translate(80,80)">
+    <g transform="rotate(120)">
+      <path d="M 18.1 -67.6 A 70 70 0 1 1 -18.1 -67.6" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+      <path d="M 15 -73 Q 0 -87 -15 -73" fill="none" stroke="var(--u-red)" stroke-width="5.5" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>
+<h2>Umbrhalia</h2><p class="mono">Cazando Eclipses · proyecto transmedia independiente · en desarrollo</p></div>
+    <div class="u-grid">
+      <div>
+        <p class="u-lead">Un proyecto transmedia itinerante sobre las trayectorias de futuros eclipses solares totales alrededor del mundo. Umbrhalia no es un personaje: es <em>la ventana de contacto misma</em>, el instante de la totalidad en que la conexión con la humanidad se vuelve posible.</p>
+        <p>Lo narra Ohr, una entidad sin género ni forma fija que representa la posibilidad, la entropía y la coincidencia cósmica. Una misma idea central, el eclipse como ventana de contacto cósmico, se traduce a varios lenguajes artísticos y sensoriales, con la accesibilidad para personas ciegas o con baja visión como principio de diseño.</p>
+        <ul class="u-piezas">
+          <li>Historia ilustrada y podcast narrados por Ohr</li>
+          <li>Mapa interactivo de eclipses totales, 1900–2100</li>
+          <li>Documental con testigos de eclipses</li>
+          <li>Instalación inmersiva multisensorial</li>
+          <li>Talleres itinerantes con telescopio</li>
+          <li>Archivo participativo de testimonios</li>
+        </ul>
+        <a class="u-cta" href="https://givgme.github.io/umbrhalia/" target="_blank" rel="noopener">Visitar Umbrhalia <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="u-fig"><svg class="u-ohr" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="-140 -140 280 280">
+  
+  <circle r="24" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <path d="M 13.77 -19.66 Q 15.21 -18.72 16.55 -17.95 Q 17.74 -17.44 18.71 -17.26 Q 19.47 -17.43 20.0 -17.97 Q 20.32 -18.84 20.47 -19.99 Q 20.5 -21.33 20.47 -22.77 Q 20.43 -24.22 20.45 -25.57 Q 20.58 -26.76 20.85 -27.71 Q 21.28 -28.4 21.89 -28.81 Q 22.66 -28.97 23.56 -28.91 Q 24.56 -28.69 25.61 -28.39 Q 26.67 -28.08 27.68 -27.83 Q 28.63 -27.7 29.47 -27.74 Q 30.19 -27.96 30.8 -28.37 Q 31.31 -28.95 31.74 -29.64 Q 32.12 -30.41 32.45 -31.28" fill="none" stroke="var(--u-red)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M -13.77 19.66 Q -15.21 18.72 -16.55 17.95 Q -17.74 17.44 -18.71 17.26 Q -19.47 17.43 -20.0 17.97 Q -20.32 18.84 -20.47 19.99 Q -20.5 21.33 -20.47 22.77 Q -20.43 24.22 -20.45 25.57 Q -20.58 26.76 -20.85 27.71 Q -21.28 28.4 -21.89 28.81 Q -22.66 28.97 -23.56 28.91 Q -24.56 28.69 -25.61 28.39 Q -26.67 28.08 -27.68 27.83 Q -28.63 27.7 -29.47 27.74 Q -30.19 27.96 -30.8 28.37 Q -31.31 28.95 -31.74 29.64 Q -32.12 30.41 -32.45 31.28" fill="none" stroke="var(--u-red)" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="32.0" cy="0.0" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="25.9" cy="18.8" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="9.9" cy="30.4" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="-9.9" cy="30.4" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="-25.9" cy="18.8" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="-32.0" cy="0.0" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="-25.9" cy="-18.8" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="-9.9" cy="-30.4" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="9.9" cy="-30.4" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="25.9" cy="-18.8" r="1.60" fill="currentColor" opacity="0.85"/>
+  <circle cx="47.0" cy="10.0" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="32.1" cy="35.7" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="5.0" cy="47.7" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="-24.0" cy="41.6" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="-43.9" cy="19.5" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="-47.0" cy="-10.0" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="-32.1" cy="-35.7" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="-5.0" cy="-47.7" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="24.0" cy="-41.6" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="43.9" cy="-19.5" r="1.82" fill="currentColor" opacity="0.75"/>
+  <circle cx="58.5" cy="26.0" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="32.0" cy="55.4" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="-6.7" cy="63.6" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="-42.8" cy="47.6" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="-62.6" cy="13.3" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="-58.5" cy="-26.0" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="-32.0" cy="-55.4" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="6.7" cy="-63.6" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="42.8" cy="-47.6" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="62.6" cy="-13.3" r="2.04" fill="currentColor" opacity="0.65"/>
+  <circle cx="64.7" cy="47.0" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="24.7" cy="76.1" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="-24.7" cy="76.1" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="-64.7" cy="47.0" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="-80.0" cy="0.0" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="-64.7" cy="-47.0" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="-24.7" cy="-76.1" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="24.7" cy="-76.1" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="64.7" cy="-47.0" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="80.0" cy="-0.0" r="2.26" fill="currentColor" opacity="0.55"/>
+  <circle cx="64.2" cy="71.3" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="10.0" cy="95.5" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="-48.0" cy="83.1" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="-87.7" cy="39.0" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="-93.9" cy="-20.0" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="-64.2" cy="-71.3" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="-10.0" cy="-95.5" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="48.0" cy="-83.1" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="87.7" cy="-39.0" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="93.9" cy="20.0" r="2.48" fill="currentColor" opacity="0.45"/>
+  <circle cx="56.0" cy="97.0" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="-11.7" cy="111.4" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="-74.9" cy="83.2" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="-109.6" cy="23.3" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="-102.3" cy="-45.6" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="-56.0" cy="-97.0" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="11.7" cy="-111.4" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="74.9" cy="-83.2" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="109.6" cy="-23.3" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="102.3" cy="45.6" r="2.70" fill="currentColor" opacity="0.35"/>
+  <circle cx="39.6" cy="121.7" r="2.92" fill="currentColor" opacity="0.25"/>
+  <circle cx="-39.6" cy="121.7" r="2.92" fill="currentColor" opacity="0.25"/>
+  <circle cx="-103.6" cy="75.2" r="2.92" fill="currentColor" opacity="0.25"/>
+  <circle cx="-128.0" cy="0.0" r="2.92" fill="currentColor" opacity="0.25"/>
+  <circle cx="-103.6" cy="-75.2" r="2.92" fill="currentColor" opacity="0.25"/>
+  <circle cx="-39.6" cy="-121.7" r="2.92" fill="currentColor" opacity="0.25"/>
+  <circle cx="39.6" cy="-121.7" r="2.92" fill="currentColor" opacity="0.25"/>
+  <circle cx="103.6" cy="-75.2" r="2.92" fill="currentColor" opacity="0.25"/>
+  <circle cx="128.0" cy="-0.0" r="2.92" fill="currentColor" opacity="0.25"/>
+  <circle cx="103.6" cy="75.2" r="2.92" fill="currentColor" opacity="0.25"/>
+</svg>
+<figcaption>Ohr en el origen del universo</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="catalogo">
+  <div class="wrap">
+    <div class="head"><div class="shape s"></div><h2>Catálogo</h2><p class="mono">Huellas en la divulgación · 2004 – 2026</p></div>
+    <div class="cat">
+      <figure class="big" style="grid-area:1/1/4/3"><img src="img/catalogo/tizayuca-sala-de-lectura-2004.jpg" alt="Recorte de El Sol de Hidalgo: una niña lee en voz alta en la inauguración de una sala de lectura en Tizayuca" loading="lazy" style="object-position:center top"><figcaption><b>Sala de lectura · Tizayuca, Hgo.</b> 2004</figcaption></figure>
+      <figure class="big" style="grid-area:1/3/3/5"><img src="img/catalogo/eclipse-total-durango-2024.jpg" alt="Equipo del LFAE con telescopios y el banderín de la UAM frente a las montañas de Durango" loading="lazy"><figcaption><b>LFAE · Eclipse Solar Total · Durango</b> 2024</figcaption></figure>
+      <figure class="" style="grid-area:1/5/3/7"><img src="img/catalogo/corona-solar-lfae.jpg" alt="Fotografía de la corona solar durante un eclipse total" loading="lazy"><figcaption><b>Corona solar · LFAE</b></figcaption></figure>
+      <div class="f y" style="grid-area:3/3/4/4" aria-hidden="true"></div>
+      <figure class="big" style="grid-area:3/4/5/7"><img src="img/catalogo/spie-optica-uam-2020.jpg" alt="Grupo de estudiantes con los banderines de los capítulos estudiantiles SPIE y Optica de la UAM Azcapotzalco" loading="lazy"><figcaption><b>Capítulos SPIE y Optica · UAM&#8209;A</b> 2020</figcaption></figure>
+      <figure class="" style="grid-area:4/1/6/2"><img src="img/catalogo/planetario-chimalhuacan-2018.jpg" alt="Mediación junto a un traje espacial en la inauguración del Planetario Chimalhuacán" loading="lazy" style="object-position:center 30%"><figcaption><b>Planetario Chimalhuacán</b> 2018</figcaption></figure>
+      <figure class="" style="grid-area:4/2/6/4"><img src="img/catalogo/festival-sihuatl-2022.jpg" alt="Público en el Festival Científico Sihuatl en Tizayuca, Hidalgo" loading="lazy"><figcaption><b>Festival Sihuatl · Tizayuca</b> 2022</figcaption></figure>
+      <figure class="" style="grid-area:5/4/6/6"><img src="img/catalogo/eclipse-anular-yucatan-2023.jpg" alt="Integrantes del LFAE junto a una camioneta durante la ruta del eclipse anular en Yucatán" loading="lazy"><figcaption><b>LFAE · Eclipse Solar Anular · Yucatán</b> 2023</figcaption></figure>
+      <figure class="" style="grid-area:6/1/7/3"><img src="img/catalogo/endc-zacatecas-2022.jpg" alt="Fotografía grupal del Encuentro Nacional de Divulgación Científica en Zacatecas" loading="lazy"><figcaption><b>Museo de la Luz · ENDC Zacatecas</b> 2022</figcaption></figure>
+      <div class="f" style="grid-area:5/6/6/7" aria-hidden="true"></div>
+      <figure class="" style="grid-area:6/3/8/4"><img src="img/catalogo/dia-noche-investigadores-2024.jpg" alt="Personas alrededor de una mesa de gravedad con esferas durante la Noche Iberoamericana de Investigadores" loading="lazy"><figcaption><b>Día y Noche de Investigadores</b> 2024</figcaption></figure>
+      <figure class="" style="grid-area:6/4/8/6"><img src="img/catalogo/veladas-escultoricas-cartel.jpg" alt="Cartel de las Veladas Escultóricas con el dibujo lineal de una escultura" loading="lazy"><figcaption><b>Veladas Escultóricas · LFAE</b></figcaption></figure>
+      <figure class="" style="grid-area:6/6/8/7"><img src="img/catalogo/filij-chapultepec-2024.jpg" alt="Manos pintando un filtro solar de cartón en un taller de la FILIJ" loading="lazy"><figcaption><b>FILIJ · Chapultepec</b> 2024</figcaption></figure>
+      <figure class="" style="grid-area:7/1/9/2"><img src="img/catalogo/ciencia-del-helado.jpg" alt="Taller de La ciencia del helado en el Túnel de la Ciencia del Metro" loading="lazy"><figcaption><b>La ciencia del helado · Metro</b> 2024–2026</figcaption></figure>
+      <figure class="big" style="grid-area:8/2/10/5"><img src="img/catalogo/campamentos-astronomicos.jpg" alt="Tiendas de campaña en un campamento astronómico nocturno" loading="lazy"><figcaption><b>Campamentos astronómicos</b> 2025–2026</figcaption></figure>
+      <figure class="" style="grid-area:9/1/10/2"><img src="img/catalogo/taller-divulgacion-comunitaria-2026.jpg" alt="Pantalla con la presentación del taller Diseño de proyectos de divulgación comunitaria" loading="lazy"><figcaption><b>Taller de divulgación comunitaria · UAM&#8209;A</b> 2026</figcaption></figure>
+      <div class="f b" style="grid-area:7/2/8/3" aria-hidden="true"></div>
+      <figure class="big" style="grid-area:8/5/10/7"><img src="img/catalogo/mural-luna.jpg" alt="Persona de espaldas formando un corazón con las manos frente a un mural de la Luna" loading="lazy"><figcaption><b>Soñar para seguir</b></figcaption></figure>
     </div>
   </div>
 </section>
@@ -294,14 +544,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <div class="wrap">
     <div class="head"><div class="shape c"></div><h2>Trayectoria</h2><p class="mono">2016 – 2026</p></div>
     <div class="tl">
-      <div class="tl-row"><span class="y">2016</span><div><b>Primeras actividades de divulgación</b><p>Semana Mundial del Espacio en la UAM Azcapotzalco y talleres en Villa de los Niños.</p></div></div>
-      <div class="tl-row"><span class="y">2016–18</span><div><b>Mujeres Hacia el Espacio</b><p>Integrante de esta iniciativa de la Agencia Espacial Mexicana, que ya no existe como tal.</p></div></div>
+      <div class="tl-row"><span class="y">2016</span><div><b>Primeras actividades de divulgación</b><p>Semana Mundial del Espacio en la UAM Azcapotzalco y talleres de física recreativa.</p></div></div>
+      <div class="tl-row"><span class="y">2016–18</span><div><b>Mujeres Hacia el Espacio</b><p>Integrante de esta iniciativa de la Agencia Espacial Mexicana.</p></div></div>
       <div class="tl-row"><span class="y">2017–19</span><div><b>Congresos y noches de estrellas</b><p>Ponencias en el Congreso Nacional de Física y participación en la Noche de las Estrellas.</p></div></div>
       <div class="tl-row hl"><span class="y">2020–21</span><div><b>Fundación de capítulos SPIE y Optica</b><p>Presidenta fundadora. Contenidos para el Día Internacional de la Luz, Nodo México (IF-UNAM, UNESCO).</p></div></div>
       <div class="tl-row"><span class="y">2021–23</span><div><b>Becaria del Museo de la Luz, DGDC-UNAM</b><p>Recorridos guiados y mediaciones teatrales de arte y ciencia.</p></div></div>
-      <div class="tl-row hl"><span class="y">2022</span><div><b>Fundación del Festival Sihuatl</b><p>Coordinadora de la primera edición: primer festival científico con perspectiva de género en Tizayuca, Hidalgo.</p></div></div>
-      <div class="tl-row"><span class="y">2023</span><div><b>Posgrado y Proyecto Eclipse</b><p>Ingreso al posgrado en Procesos Culturales para el Diseño y el Arte.</p></div></div>
-      <div class="tl-row hl"><span class="y">2024</span><div><b>Veladas Escultóricas y eclipse total</b><p>Inicio de la serie en la UAM y observación del eclipse solar total.</p></div></div>
+      <div class="tl-row hl"><span class="y">2022</span><div><b>Festival Sihuatl</b><p>Coordinadora y proponente de la iniciativa del primer festival científico con perspectiva de género en Tizayuca, Hidalgo.</p></div></div>
+      <div class="tl-row hl"><span class="y">2023</span><div><b>Posgrado, Proyecto Eclipse y Veladas</b><p>Ingreso al posgrado en Procesos Culturales para el Diseño y el Arte e inicio de las Veladas Escultóricas y Astronómicas en la UAM Azcapotzalco.</p></div></div>
+      <div class="tl-row hl"><span class="y">2024</span><div><b>Eclipse solar total</b><p>Observación del eclipse solar total en Durango con el LFAE.</p></div></div>
       <div class="tl-row hl"><span class="y">2025–</span><div><b>Representante estudiantil</b><p>Posgrados de CyAD ante el Consejo Académico de la UAM Azcapotzalco y el Colegio Académico de la UAM.</p></div></div>
       <div class="tl-row"><span class="y">2025–26</span><div><b>Redes y congresos de divulgación</b><p>Red POP, Ruta CPC, Falling Walls y Encuentro Nacional de Divulgación de la Ciencia.</p></div></div>
     </div>
@@ -322,10 +572,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div>
       <h3 class="sub"><i class="shape t" style="width:20px;height:20px"></i>Formación</h3>
       <ul class="list">
-        <li><span class="y">2023–</span><span>Posgrado en Procesos Culturales para el Diseño y el Arte, UAM Azcapotzalco</span></li>
+        <li><span class="y">2026</span><span>Diplomado en Narrativas Transmedia · en curso, concluye en diciembre de 2026</span></li>
         <li><span class="y">2024</span><span>Diplomado en Mediación Lectora, FCE</span></li>
+        <li><span class="y">2023–hoy</span><span>Posgrado en Procesos Culturales para el Diseño y el Arte, UAM Azcapotzalco</span></li>
         <li><span class="y">2022</span><span>Diplomado La cultura en el centro de la economía sostenible, Secretaría de Cultura</span></li>
-        <li><span class="y">2016–22</span><span>Ingeniería Física, UAM Azcapotzalco</span></li>
+        <li><span class="y">2016–2022</span><span>Ingeniería Física, UAM Azcapotzalco</span></li>
       </ul>
     </div>
   </div>
@@ -334,17 +585,27 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <section class="block" id="enlaces">
   <div class="wrap">
     <div class="head"><div class="shape s"></div><h2>Publicaciones y difusión</h2><p class="mono">Enlaces externos</p></div>
+    <div class="pub-dest">
+      <span class="gana">Artículo de divulgación · 2024</span>
+      <h3>A la cacería de eclipses solares</h3>
+      <p>Revista Azcatl, UAM Azcapotzalco.</p>
+      <div class="pub-links"><a href="https://azcatl.azc.uam.mx/index.php/azcatl/article/view/41/48" target="_blank" rel="noopener">Leer en Azcatl <span aria-hidden="true">↗</span></a><a href="https://zaloamati.azc.uam.mx/items/129076bc-6fed-4f7a-ae5c-55e829714cb3" target="_blank" rel="noopener">Repositorio Zaloamati <span aria-hidden="true">↗</span></a></div>
+    </div>
     <div class="links">
-      <a class="lk" href="https://azcatl.azc.uam.mx/index.php/azcatl/article/view/41/48" target="_blank" rel="noopener"><span class="y">2024</span><span><b>A la cacería de eclipses solares</b><small>Artículo de divulgación · Revista Azcatl, UAM Azcapotzalco</small></span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="lk" href="https://zaloamati.azc.uam.mx/items/129076bc-6fed-4f7a-ae5c-55e829714cb3" target="_blank" rel="noopener"><span class="y">2024</span><span><b>A la cacería de eclipses solares</b><small>Repositorio institucional Zaloamati</small></span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="lk" href="https://spie.org/documents/Courses/Education_Outreach/Scholarships/2022/Gabriela_Vera-Garfias_PR22.pdf" target="_blank" rel="noopener"><span class="y">2022</span><span><b>SPIE Optics and Photonics Education Scholarship</b><small>Anuncio oficial de la beca · SPIE</small></span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="lk" href="https://spie.org/profile/GIVERAGARFIAS" target="_blank" rel="noopener"><span class="y">2022</span><span><b>Perfil en SPIE</b><small>Sociedad Internacional de Óptica y Fotónica</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://www.facebook.com/RedLatinoamericanaDeProyectosDeDivulgacion/posts/-ya-tenemos-completas-nuestras-cinco-pl%C3%A1ticas-que-inspirancerramos-la-presentaci/1059961420361374/" target="_blank" rel="noopener"><span class="y">2026</span><span><b>Pláticas que inspiran</b><small>4.º Congreso Virtual de Divulgación · Red Latinoamericana de Proyectos de Divulgación</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://boletines.uam.mx/numero-584/" target="_blank" rel="noopener"><span class="y">2025</span><span><b>Mesa «Partículas y centellas»</b><small>Boletín UAM n.º 584 · ciclo Puentes UAM, Comunicación del Conocimiento</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://colegioacademico.uam.mx/integrantes-del-colegio-academico-2025-2027/" target="_blank" rel="noopener"><span class="y">2025</span><span><b>Representante del alumnado de CyAD</b><small>Colegio Académico de la UAM · periodo 2025–2027</small></span><span class="ar" aria-hidden="true">↗</span></a>
       <a class="lk" href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/762852472539766" target="_blank" rel="noopener"><span class="y">2024</span><span><b>Veladas Escultóricas: Dos Soluciones, Manuel Felguérez</b><small>UAM Azcapotzalco</small></span><span class="ar" aria-hidden="true">↗</span></a>
       <a class="lk" href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/774805878011092" target="_blank" rel="noopener"><span class="y">2024</span><span><b>Mujeres y el Saber en el Tiempo</b><small>UAM Azcapotzalco · 11F</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://filij.fondodeculturaeconomica.com/Actividad/3294" target="_blank" rel="noopener"><span class="y">2024</span><span><b>Taller «Historia entre Eclipses»</b><small>FILIJ · club de lectura «Historias de aquí y ninguna parte»</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://coordinaciongenero.unam.mx/evento/taller-mujeres-en-la-ciencia/" target="_blank" rel="noopener"><span class="y">2024</span><span><b>Taller «Mujeres en la ciencia»</b><small>CCH Vallejo · 11F · Coordinación para la Igualdad de Género UNAM</small></span><span class="ar" aria-hidden="true">↗</span></a>
       <a class="lk" href="https://www.facebook.com/LFAE.UAMA/posts/268342019524454" target="_blank" rel="noopener"><span class="y">2023</span><span><b>Eclipse Solar Anular 2023</b><small>Laboratorio de Física Aplicada a la Existencia</small></span><span class="ar" aria-hidden="true">↗</span></a>
       <a class="lk" href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/635396038618744" target="_blank" rel="noopener"><span class="y">2023</span><span><b>Veladas Astronómicas del Solsticio</b><small>UAM Azcapotzalco</small></span><span class="ar" aria-hidden="true">↗</span></a>
       <a class="lk" href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/720384560119891" target="_blank" rel="noopener"><span class="y">2023</span><span><b>FILIJ en la UAM</b><small>UAM Azcapotzalco</small></span><span class="ar" aria-hidden="true">↗</span></a>
       <a class="lk" href="https://www.facebook.com/ConocimientoUAM/posts/896327615639017" target="_blank" rel="noopener"><span class="y">2023</span><span><b>Aniversario del Túnel de la Ciencia</b><small>Comunicación del Conocimiento UAM</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://spie.org/documents/Courses/Education_Outreach/Scholarships/2022/Gabriela_Vera-Garfias_PR22.pdf" target="_blank" rel="noopener"><span class="y">2022</span><span><b>SPIE Optics and Photonics Education Scholarship</b><small>Anuncio oficial de la beca · SPIE</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://spie.org/profile/GIVERAGARFIAS" target="_blank" rel="noopener"><span class="y">2022</span><span><b>Perfil en SPIE</b><small>Sociedad Internacional de Óptica y Fotónica</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://alephuamazcapotzalco.wordpress.com/2020/11/18/semana-mundial-del-espacio/" target="_blank" rel="noopener"><span class="y">2020</span><span><b>Semana Mundial del Espacio</b><small>Aleph, boletín de la UAM Azcapotzalco</small></span><span class="ar" aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>
@@ -360,7 +621,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   </div>
 </section>
 
-<footer><div class="wrap"><span>© 2026 Gabriela Isabel Vera Garfias</span><span>Hecho con círculos, cuadrados y triángulos.</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Gabriela Isabel Vera Garfias</span><span>@givgme</span></div></footer>
 
 <script>
 document.getElementById('copy').addEventListener('click',function(){
