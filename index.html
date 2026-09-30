@@ -2,7 +2,7 @@
 <meta name="description" content="Gabriela Isabel Vera Garfias — ingeniera física, divulgadora y gestora científico-cultural. Coordinadora del Laboratorio de Física Aplicada a la Existencia (LFAE), UAM Azcapotzalco.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Syne:wght@600;700;800&family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: grilla Bauhaus de 12 columnas; cada sección se ancla a una figura primaria (círculo azul, cuadrado rojo, triángulo amarillo) según la teoría del color de Kandinsky. */
 :root{
@@ -10,11 +10,12 @@
   --ink:#151515;
   --ink-soft:#4A4A48;
   --line:#151515;
-  --red:#D3291F;
-  --yellow:#F1B70A;
-  --blue:#1E4C9A;
+  --red:#9B3326;
+  --yellow:#C49A3C;
+  --blue:#24395A;
   --card:#F7F6F2;
   --on-accent:#F7F6F2;
+  --serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
   --display:"Syne","Futura","Century Gothic",system-ui,sans-serif;
   --body:"Jost","Futura","Avenir Next",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
@@ -23,10 +24,10 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#121212;--ink:#EDECE7;--ink-soft:#B4B3AD;--line:#EDECE7;
-  --red:#E5463B;--yellow:#F5C431;--blue:#5B86D6;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}}
+  --red:#C4604F;--yellow:#D4AE5E;--blue:#8199C2;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#121212;--ink:#EDECE7;--ink-soft:#B4B3AD;--line:#EDECE7;
-  --red:#E5463B;--yellow:#F5C431;--blue:#5B86D6;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}
+  --red:#C4604F;--yellow:#D4AE5E;--blue:#8199C2;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
@@ -51,9 +52,9 @@ nav a:hover{text-decoration:underline}
 
 /* HERO */
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding-block:clamp(40px,7vw,88px)}
-.hero h1{font-size:clamp(2.6rem,7.4vw,6.2rem);font-weight:800;letter-spacing:-.02em}
+.hero h1{font-family:var(--serif);font-size:clamp(2.8rem,7.6vw,6.4rem);font-weight:500;letter-spacing:-.01em;line-height:.98}
 .hero h1 span{display:block}
-.hero h1 .r{color:var(--red)}
+.hero h1 .r{font-style:italic;font-weight:500}
 .roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .roles span{border:2px solid var(--line);padding:4px 12px;font-weight:500;font-size:.95rem}
 .hero p.lead{margin-top:22px;font-size:1.15rem;color:var(--ink-soft)}
@@ -131,6 +132,19 @@ section.block{padding-block:clamp(48px,7vw,96px)}
 h3.sub{font-size:1.5rem;margin-bottom:16px;display:flex;align-items:center;gap:10px}
 h3.sub i{width:20px;height:20px;display:block}
 
+
+/* ENLACES */
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:3px solid var(--line)}
+.lk{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:16px 4px;border-bottom:2px solid var(--line);text-decoration:none;min-width:0}
+.lk:nth-child(odd){border-right:2px solid var(--line);padding-right:18px}
+.lk:nth-child(even){padding-left:18px}
+.lk .y{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--red);font-weight:500}
+.lk b{display:block;font-weight:600;line-height:1.3}
+.lk small{color:var(--ink-soft);font-size:.9rem}
+.lk .ar{font-weight:600;color:var(--blue)}
+.lk:hover b{text-decoration:underline}
+@media (max-width:880px){.links{grid-template-columns:minmax(0,1fr)}.lk:nth-child(odd){border-right:0;padding-right:4px}.lk:nth-child(even){padding-left:4px}}
+
 /* CONTACTO */
 .contact{background:var(--ink);color:var(--paper)}
 .contact .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);padding-block:clamp(48px,7vw,88px);align-items:center}
@@ -172,6 +186,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <li><a href="#lfae">LFAE</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#trayectoria">Trayectoria</a></li>
+        <li><a href="#enlaces">Enlaces</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -185,7 +200,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <p class="mono">Tizayuca, Hidalgo · UAM Azcapotzalco</p>
       <h1><span>Gabriela</span><span class="r">Vera</span><span>Garfias</span></h1>
       <div class="roles">
-        <span>Ingeniera física</span><span>Divulgadora científica</span><span>Gestora científico-cultural</span>
+        <span>Ingeniera física</span><span>Divulgadora científica</span><span>Gestora científico-cultural</span><span>Representante estudiantil</span>
       </div>
       <p class="lead">Diseño experiencias donde la física, el arte y la cultura se encuentran, para que públicos diversos reconozcan la ciencia como algo propio.</p>
     </div>
@@ -220,7 +235,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="fig"><b>10</b><span>años de divulgación continua (2016–2026)</span></div>
     <div class="fig"><b>100+</b><span>charlas y talleres impartidos</span></div>
     <div class="fig"><b>20+</b><span>congresos nacionales e internacionales</span></div>
-    <div class="fig"><b>4</b><span>ediciones del Festival Sihuatl</span></div>
+    <div class="fig"><b>1.ª</b><span>Fundadora del primer festival científico con perspectiva de género en Tizayuca: Sihuatl 2022</span></div>
   </div>
 </div>
 
@@ -231,6 +246,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <div>
         <p>Soy ingeniera física por la Universidad Autónoma Metropolitana, Unidad Azcapotzalco, y curso el posgrado en Procesos Culturales para el Diseño y el Arte. Mi investigación estudia los eclipses solares desde una mirada interdisciplinaria de la comunicación de la ciencia.</p>
         <p>Desde 2016 organizo observaciones astronómicas, mediaciones en museos, ferias, talleres en escuelas y festivales comunitarios. Trabajo con infancias, juventudes y comunidades, con perspectiva de género, inclusión y acceso a la cultura.</p>
+        <p>Actualmente soy representante estudiantil de los posgrados de la División de Ciencias y Artes para el Diseño ante el Consejo Académico de la UAM Azcapotzalco y ante el Colegio Académico de la UAM.</p>
         <p>Me formé como becaria en el Museo de la Luz de la UNAM, fui mentora en la iniciativa Iluminando el Futuro de la IEEE y soy integrante de Mujeres Hacia el Espacio de la Agencia Espacial Mexicana.</p>
       </div>
       <div class="quote"><p>La ciencia se apropia cuando llega en un lenguaje cercano y culturalmente significativo.</p></div>
@@ -247,8 +263,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <li><span>Veladas Escultóricas y Astronómicas</span><span>2024 – hoy</span></li>
         <li><span>Proyecto Eclipse Solar 2023–2024</span><span>2023 – 2024</span></li>
         <li><span>Semana Mundial del Espacio</span><span>anual</span></li>
-        <li><span>Club de lectura «Historias de aquí y ninguna parte»</span><span>2023 – hoy</span></li>
-        <li><span>Maridajes científicos</span><span>2024 – hoy</span></li>
+        <li><span>Club de lectura «Historias de aquí y ninguna parte»</span><span>desde 2023</span></li>
+        <li><span>Maridajes científicos</span><span>2024</span></li>
       </ul>
     </div>
   </div>
@@ -260,10 +276,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="projects">
       <article class="proj"><div class="k"><i></i><span class="mono">2024 – hoy</span></div><h3>Veladas Escultóricas</h3><p>Observación astronómica y mediación frente a las esculturas de Felguérez, Siegmann, Rojo y otros artistas en la UAM Azcapotzalco.</p></article>
       <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Eclipse Solar</h3><p>Rutas de observación del eclipse anular de 2023 y el total de 2024, con talleres en escuelas y en la UAM.</p></article>
-      <article class="proj"><div class="k"><i></i><span class="mono">2022 – hoy</span></div><h3>Festival Sihuatl</h3><p>Primer festival científico-cultural de Tizayuca, Hidalgo, por el Día Internacional de la Mujer y la Niña en la Ciencia.</p></article>
+      <article class="proj"><div class="k"><i></i><span class="mono">2022 · 1.ª edición</span></div><h3>Festival Sihuatl</h3><p>Fundadora y coordinadora de la primera edición: el primer festival científico con perspectiva de género en Tizayuca, Hidalgo, en el marco del Día Internacional de la Mujer y la Niña en la Ciencia.</p></article>
       <article class="proj"><div class="k"><i></i><span class="mono">2021</span></div><h3>Tlahuilia</h3><p>Proyecto educativo STEM financiado por el SPIE Outreach Grant, desde los capítulos estudiantiles SPIE y Optica.</p></article>
       <article class="proj"><div class="k"><i></i><span class="mono">2022 – 2025</span></div><h3>FILIJ en la UAM</h3><p>Sede de la Feria Internacional del Libro Infantil y Juvenil, con tendedero literario y actividades de ciencia y lectura.</p></article>
       <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2026</span></div><h3>Ciencia en el Metro</h3><p>Talleres en el Museo del Metro y «La ciencia del helado» en Metro La Raza, con Comunicación del Conocimiento UAM.</p></article>
+      <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Mediaciones en museos</h3><p>Visitas mediadas al MUNAE, el MUNAL, el Museo del Estanquillo y el Museo Nacional de San Carlos con la comunidad UAM.</p></article>
+      <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Jornadas Galileanas</h3><p>Jornadas de astronomía, historia y cultura en torno a Galileo en la UAM Azcapotzalco.</p></article>
+      <article class="proj"><div class="k"><i></i><span class="mono">2024 – 2025</span></div><h3>Jornadas Nacionales de Física</h3><p>Observaciones, veladas y maridajes científicos con la Sociedad Mexicana de Física.</p></article>
     </div>
   </div>
 </section>
@@ -276,9 +295,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <div class="tl-row"><span class="y">2017–19</span><div><b>Congresos y noches de estrellas</b><p>Ponencias en el Congreso Nacional de Física y participación en la Noche de las Estrellas.</p></div></div>
       <div class="tl-row hl"><span class="y">2020–21</span><div><b>Fundación de capítulos SPIE y Optica</b><p>Presidenta fundadora. Contenidos para el Día Internacional de la Luz, Nodo México (IF-UNAM, UNESCO).</p></div></div>
       <div class="tl-row"><span class="y">2021–23</span><div><b>Becaria del Museo de la Luz, DGDC-UNAM</b><p>Recorridos guiados y mediaciones teatrales de arte y ciencia.</p></div></div>
-      <div class="tl-row hl"><span class="y">2022</span><div><b>Festival Sihuatl</b><p>Primer evento científico de la región de Tizayuca, Hidalgo.</p></div></div>
+      <div class="tl-row hl"><span class="y">2022</span><div><b>Fundación del Festival Sihuatl</b><p>Coordinadora de la primera edición: primer festival científico con perspectiva de género en Tizayuca, Hidalgo.</p></div></div>
       <div class="tl-row"><span class="y">2023</span><div><b>Posgrado y Proyecto Eclipse</b><p>Ingreso al posgrado en Procesos Culturales para el Diseño y el Arte.</p></div></div>
       <div class="tl-row hl"><span class="y">2024</span><div><b>Veladas Escultóricas y eclipse total</b><p>Inicio de la serie en la UAM y observación del eclipse solar total.</p></div></div>
+      <div class="tl-row hl"><span class="y">2025–</span><div><b>Representante estudiantil</b><p>Posgrados de CyAD ante el Consejo Académico de la UAM Azcapotzalco y el Colegio Académico de la UAM.</p></div></div>
       <div class="tl-row"><span class="y">2025–26</span><div><b>Redes y congresos de divulgación</b><p>Red POP, Ruta CPC, Falling Walls y Encuentro Nacional de Divulgación de la Ciencia.</p></div></div>
     </div>
   </div>
@@ -303,6 +323,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <li><span class="y">2022</span><span>Diplomado La cultura en el centro de la economía sostenible, Secretaría de Cultura</span></li>
         <li><span class="y">2016–22</span><span>Ingeniería Física, UAM Azcapotzalco</span></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="enlaces">
+  <div class="wrap">
+    <div class="head"><div class="shape s"></div><h2>Publicaciones y difusión</h2><p class="mono">Enlaces externos</p></div>
+    <div class="links">
+      <a class="lk" href="https://azcatl.azc.uam.mx/index.php/azcatl/article/view/41/48" target="_blank" rel="noopener"><span class="y">2024</span><span><b>A la cacería de eclipses solares</b><small>Artículo de divulgación · Revista Azcatl, UAM Azcapotzalco</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://zaloamati.azc.uam.mx/items/129076bc-6fed-4f7a-ae5c-55e829714cb3" target="_blank" rel="noopener"><span class="y">2024</span><span><b>A la cacería de eclipses solares</b><small>Repositorio institucional Zaloamati</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://spie.org/documents/Courses/Education_Outreach/Scholarships/2022/Gabriela_Vera-Garfias_PR22.pdf" target="_blank" rel="noopener"><span class="y">2022</span><span><b>SPIE Optics and Photonics Education Scholarship</b><small>Anuncio oficial de la beca · SPIE</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://spie.org/profile/GIVERAGARFIAS" target="_blank" rel="noopener"><span class="y">2022</span><span><b>Perfil en SPIE</b><small>Sociedad Internacional de Óptica y Fotónica</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/762852472539766" target="_blank" rel="noopener"><span class="y">2024</span><span><b>Veladas Escultóricas: Dos Soluciones, Manuel Felguérez</b><small>UAM Azcapotzalco</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/774805878011092" target="_blank" rel="noopener"><span class="y">2024</span><span><b>Mujeres y el Saber en el Tiempo</b><small>UAM Azcapotzalco · 11F</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://www.facebook.com/LFAE.UAMA/posts/268342019524454" target="_blank" rel="noopener"><span class="y">2023</span><span><b>Eclipse Solar Anular 2023</b><small>Laboratorio de Física Aplicada a la Existencia</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/635396038618744" target="_blank" rel="noopener"><span class="y">2023</span><span><b>Veladas Astronómicas del Solsticio</b><small>UAM Azcapotzalco</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://www.facebook.com/UAMAzcapotzalcoOficial/posts/720384560119891" target="_blank" rel="noopener"><span class="y">2023</span><span><b>FILIJ en la UAM</b><small>UAM Azcapotzalco</small></span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="lk" href="https://www.facebook.com/ConocimientoUAM/posts/896327615639017" target="_blank" rel="noopener"><span class="y">2023</span><span><b>Aniversario del Túnel de la Ciencia</b><small>Comunicación del Conocimiento UAM</small></span><span class="ar" aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>
