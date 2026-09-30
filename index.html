@@ -156,6 +156,13 @@ section.block{padding-block:clamp(48px,7vw,96px)}
 .proj .vel-sub{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.85!important;margin-top:-4px}
 .vel-serie{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .vel-serie li{border:2px solid currentColor;padding:3px 10px;font-weight:600;font-size:.9rem}
+.proj.completa{grid-column:1/-1;padding:34px 30px}
+.proj.completa h3{font-size:clamp(1.6rem,2.6vw,2.1rem)}
+.proj.completa p{font-size:1.05rem;max-width:70ch;color:inherit;opacity:.92}
+.proj.azul{background:var(--blue);color:var(--on-accent)}
+.proj.completa .k i{background:currentColor!important;border-radius:50%!important;clip-path:none!important}
+.p-cta{align-self:start;margin-top:6px;padding:8px 16px;border:2px solid currentColor;text-decoration:none;font-weight:600}
+.p-cta:hover{background:var(--on-accent);color:var(--blue)}
 .proj .gana{align-self:start;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;background:#151515;color:#F7F6F2;padding:3px 8px}
 .proj .k{display:flex;align-items:center;gap:10px}
 .proj .k i{width:18px;height:18px;flex:none}
@@ -262,7 +269,7 @@ footer .priv{flex-basis:100%;font-size:.78rem}
   .hero .wrap,.about,.lfae-grid,.two,.contact .wrap{grid-template-columns:minmax(0,1fr)}
   .comp{justify-self:center;max-width:380px}
   .projects{grid-template-columns:minmax(0,1fr)}
-  .proj.principal,.proj.ancha{grid-column:auto}
+  .proj.principal,.proj.ancha,.proj.completa{grid-column:auto}
   .bar .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fig:nth-child(3){border-left:0;padding-left:0}
   .fig:nth-child(n+3){border-top:3px solid var(--line)}
@@ -405,6 +412,7 @@ footer .priv{flex-basis:100%;font-size:.78rem}
       <article class="proj "><div class="k"><i></i><span class="mono">2016 – hoy</span></div><h3>Semana Mundial del Espacio</h3><p>Actividades anuales en la UAM Azcapotzalco desde 2016; en 2025, con Veladas Astronómicas.</p></article>
       <article class="proj "><div class="k"><i></i><span class="mono">2022 – 2025</span></div><h3>FILIJ en la UAM</h3><p>Sede de la Feria Internacional del Libro Infantil y Juvenil, con tendedero literario y actividades de ciencia y lectura.</p></article>
       <article class="proj principal amarilla"><div class="k"><i></i><span class="mono">2023 – hoy</span></div><h3>Veladas</h3><p class="vel-sub">Astronómicas · Galileanas · Escultóricas</p><p>Empezaron siendo astronómicas y hoy son un formato flexible con identidad propia. En las escultóricas, las más fuertes, recorremos el artista, la pieza, su narrativa y la temática que nos invita a abordar, vinculándola con la ciencia y también con la filosofía, en el marco de fechas como la Semana Mundial del Espacio, el Día de la Cultura Científica, el Día del Libro o el Día de la Luz. Después hacemos un recorrido con las personas que asisten y, a veces, picnics nocturnos con cine, micrófono abierto o lectura de cuentos.</p><ul class="vel-serie"><li>Velada del Tiempo Nuevo</li><li>Velada del Espacio Nuevo</li><li>Velada del Fuego Nuevo · 52 años de la UAM</li></ul></article>
+      <article class="proj completa azul"><div class="k"><i></i><span class="mono">2026 · Tesis de maestría</span></div><span class="gana">Producto de tesis</span><h3>Memorias de la Umbra</h3><p class="vel-sub">Ciencia, cultura y memoria del eclipse solar total en México</p><p>Archivo histórico de los eclipses solares en México y el mundo: memoria cultural, cronología de eclipses en México, registro mexicano, efemérides y línea del tiempo. Producto de mi tesis en el Posgrado en Procesos Culturales para el Diseño y el Arte, con el registro del Laboratorio de Física Aplicada a la Existencia.</p><a class="p-cta" href="https://givgme.github.io/memorias-de-la-umbra/" target="_blank" rel="noopener">Visitar Memorias de la Umbra <span aria-hidden="true">↗</span></a></article>
       <article class="proj ancha"><div class="k"><i></i><span class="mono">2022 · 1.ª edición</span></div><h3>Festival Sihuatl</h3><p>Coordinadora y proponente de la iniciativa: el primer festival científico con perspectiva de género en Tizayuca, Hidalgo, en el marco del Día Internacional de la Mujer y la Niña en la Ciencia.</p></article>
       <article class="proj "><div class="k"><i></i><span class="mono">2023 – 2026</span></div><h3>Ciencia en el Metro</h3><p>Talleres en el Museo del Metro y «La ciencia del helado» en Metro La Raza, con Comunicación del Conocimiento UAM.</p></article>
       <article class="proj "><div class="k"><i></i><span class="mono">2021</span></div><h3>Tlahuilia</h3><p>Proyecto educativo STEM financiado por el SPIE Outreach Grant, desde los capítulos estudiantiles SPIE y Optica.</p></article>
