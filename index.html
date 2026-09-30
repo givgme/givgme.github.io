@@ -2,7 +2,7 @@
 <meta name="description" content="Gabriela Isabel Vera Garfias — ingeniera física, divulgadora y gestora científico-cultural. Coordinadora del Laboratorio de Física Aplicada a la Existencia (LFAE), UAM Azcapotzalco.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Syne:wght@600;700;800&family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: grilla Bauhaus de 12 columnas; cada sección se ancla a una figura primaria (círculo azul, cuadrado rojo, triángulo amarillo) según la teoría del color de Kandinsky. */
 :root{
@@ -10,9 +10,9 @@
   --ink:#151515;
   --ink-soft:#4A4A48;
   --line:#151515;
-  --red:#9B3326;
-  --yellow:#C49A3C;
-  --blue:#24395A;
+  --red:#D3291F;
+  --yellow:#F1B70A;
+  --blue:#1E4C9A;
   --card:#F7F6F2;
   --on-accent:#F7F6F2;
   --serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
@@ -24,10 +24,10 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#121212;--ink:#EDECE7;--ink-soft:#B4B3AD;--line:#EDECE7;
-  --red:#C4604F;--yellow:#D4AE5E;--blue:#8199C2;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}}
+  --red:#E5463B;--yellow:#F5C431;--blue:#5B86D6;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#121212;--ink:#EDECE7;--ink-soft:#B4B3AD;--line:#EDECE7;
-  --red:#C4604F;--yellow:#D4AE5E;--blue:#8199C2;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}
+  --red:#E5463B;--yellow:#F5C431;--blue:#5B86D6;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
@@ -52,9 +52,9 @@ nav a:hover{text-decoration:underline}
 
 /* HERO */
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding-block:clamp(40px,7vw,88px)}
-.hero h1{font-family:var(--serif);font-size:clamp(2.8rem,7.6vw,6.4rem);font-weight:500;letter-spacing:-.01em;line-height:.98}
+.hero h1{font-family:var(--body);font-size:clamp(2.2rem,5.6vw,4.6rem);font-weight:500;text-transform:uppercase;letter-spacing:.06em;line-height:1.05}
 .hero h1 span{display:block}
-.hero h1 .r{font-style:italic;font-weight:500}
+.hero h1 .r{color:var(--red)}
 .roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .roles span{border:2px solid var(--line);padding:4px 12px;font-weight:500;font-size:.95rem}
 .hero p.lead{margin-top:22px;font-size:1.15rem;color:var(--ink-soft)}
@@ -198,7 +198,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <div class="wrap">
     <div>
       <p class="mono">Tizayuca, Hidalgo · UAM Azcapotzalco</p>
-      <h1><span>Gabriela</span><span class="r">Vera</span><span>Garfias</span></h1>
+      <h1><span>Gabriela Isabel</span><span class="r">Vera Garfias</span></h1>
       <div class="roles">
         <span>Ingeniera física</span><span>Divulgadora científica</span><span>Gestora científico-cultural</span><span>Representante estudiantil</span>
       </div>
