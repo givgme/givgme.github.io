@@ -1,0 +1,330 @@
+<title>Gabriela Vera Garfias</title>
+<meta name="description" content="Gabriela Isabel Vera Garfias — ingeniera física, divulgadora y gestora científico-cultural. Coordinadora del Laboratorio de Física Aplicada a la Existencia (LFAE), UAM Azcapotzalco.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: grilla Bauhaus de 12 columnas; cada sección se ancla a una figura primaria (círculo azul, cuadrado rojo, triángulo amarillo) según la teoría del color de Kandinsky. */
+:root{
+  --paper:#EDECE7;
+  --ink:#151515;
+  --ink-soft:#4A4A48;
+  --line:#151515;
+  --red:#D3291F;
+  --yellow:#F1B70A;
+  --blue:#1E4C9A;
+  --card:#F7F6F2;
+  --on-accent:#F7F6F2;
+  --display:"Syne","Futura","Century Gothic",system-ui,sans-serif;
+  --body:"Jost","Futura","Avenir Next",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --gut:clamp(16px,4vw,48px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121212;--ink:#EDECE7;--ink-soft:#B4B3AD;--line:#EDECE7;
+  --red:#E5463B;--yellow:#F5C431;--blue:#5B86D6;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121212;--ink:#EDECE7;--ink-soft:#B4B3AD;--line:#EDECE7;
+  --red:#E5463B;--yellow:#F5C431;--blue:#5B86D6;--card:#1C1C1B;--on-accent:#121212;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:var(--gut)}
+a{color:inherit;text-decoration-thickness:2px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);line-height:1.02;text-wrap:balance;margin:0}
+p{margin:0;max-width:62ch}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* NAV */
+header.top{border-bottom:3px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;letter-spacing:.02em}
+.mark i{display:block;width:14px;height:14px}
+.mark i:nth-child(1){background:var(--red)}
+.mark i:nth-child(2){background:var(--yellow);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.mark i:nth-child(3){background:var(--blue);border-radius:50%}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:clamp(12px,2.4vw,28px);flex-wrap:wrap}
+nav a{text-decoration:none;font-weight:500;font-size:.95rem}
+nav a:hover{text-decoration:underline}
+
+/* HERO */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding-block:clamp(40px,7vw,88px)}
+.hero h1{font-size:clamp(2.6rem,7.4vw,6.2rem);font-weight:800;letter-spacing:-.02em}
+.hero h1 span{display:block}
+.hero h1 .r{color:var(--red)}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.roles span{border:2px solid var(--line);padding:4px 12px;font-weight:500;font-size:.95rem}
+.hero p.lead{margin-top:22px;font-size:1.15rem;color:var(--ink-soft)}
+.comp{width:100%;max-width:520px;justify-self:end;aspect-ratio:1/1}
+.comp svg{width:100%;height:100%;display:block}
+.spin{transform-origin:300px 250px;animation:turn 60s linear infinite}
+@keyframes turn{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+
+/* CIFRAS */
+.bar{border-block:3px solid var(--line)}
+.bar .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.fig{padding:22px 16px;border-left:3px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.fig:first-child{border-left:0;padding-left:0}
+.fig b{font-family:var(--display);font-size:clamp(2rem,4.2vw,3.2rem);line-height:1;font-variant-numeric:tabular-nums}
+.fig:nth-child(1) b{color:var(--red)}
+.fig:nth-child(2) b{color:var(--blue)}
+.fig:nth-child(3) b{color:var(--ink)}
+.fig:nth-child(4) b{color:var(--yellow)}
+
+/* SECCIONES */
+section.block{padding-block:clamp(48px,7vw,96px)}
+.head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:end;margin-bottom:clamp(28px,4vw,48px)}
+.shape{width:56px;height:56px}
+.shape.c{background:var(--blue);border-radius:50%}
+.shape.s{background:var(--red)}
+.shape.t{background:var(--yellow);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.head h2{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800}
+.head .mono{grid-column:2;color:var(--ink-soft)}
+
+.about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+.about p+p{margin-top:16px}
+.quote{border:3px solid var(--line);padding:24px;align-self:start;background:var(--card);position:relative}
+.quote::before{content:"";position:absolute;top:-3px;left:-3px;width:40px;height:40px;background:var(--yellow)}
+.quote p{font-family:var(--display);font-size:1.4rem;line-height:1.25;font-weight:700;position:relative}
+
+/* LFAE */
+.lfae{background:var(--blue);color:var(--on-accent)}
+.lfae .head .mono{color:var(--on-accent);opacity:.85}
+.lfae .shape.c{background:var(--yellow)}
+.lfae-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+.lfae ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.lfae li{border-top:2px solid currentColor;padding:12px 0;display:flex;justify-content:space-between;gap:16px}
+.lfae li:last-child{border-bottom:2px solid currentColor}
+.lfae li span:last-child{font-family:var(--mono);font-size:.8rem;opacity:.85;white-space:nowrap}
+
+/* PROYECTOS */
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:3px solid var(--line)}
+.proj{padding:26px 22px;border-right:3px solid var(--line);border-bottom:3px solid var(--line);display:flex;flex-direction:column;gap:10px;min-width:0}
+.proj:nth-child(3n){border-right:0}
+.proj:nth-last-child(-n+3){border-bottom:0}
+.proj .k{display:flex;align-items:center;gap:10px}
+.proj .k i{width:18px;height:18px;flex:none}
+.proj:nth-child(3n+1) .k i{background:var(--red)}
+.proj:nth-child(3n+2) .k i{background:var(--blue);border-radius:50%}
+.proj:nth-child(3n) .k i{background:var(--yellow);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.proj h3{font-size:1.35rem;font-weight:700}
+.proj p{color:var(--ink-soft);font-size:.98rem}
+
+/* TRAYECTORIA */
+.tl{display:grid;gap:0;border-left:3px solid var(--line);margin-left:8px}
+.tl-row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;padding:14px 0 14px 24px;position:relative}
+.tl-row::before{content:"";position:absolute;left:-10px;top:22px;width:17px;height:17px;background:var(--paper);border:3px solid var(--line);border-radius:50%}
+.tl-row.hl::before{background:var(--red);border-color:var(--red)}
+.tl-row .y{font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums;padding-top:3px}
+.tl-row b{font-weight:600}
+.tl-row p{color:var(--ink-soft);font-size:.97rem}
+
+/* RECONOCIMIENTOS + FORMACIÓN */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,56px)}
+.list{list-style:none;margin:0;padding:0}
+.list li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:14px 0;border-top:2px solid var(--line)}
+.list li:last-child{border-bottom:2px solid var(--line)}
+.list .y{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--red);font-weight:500}
+h3.sub{font-size:1.5rem;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+h3.sub i{width:20px;height:20px;display:block}
+
+/* CONTACTO */
+.contact{background:var(--ink);color:var(--paper)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);padding-block:clamp(48px,7vw,88px);align-items:center}
+.contact h2{font-size:clamp(2rem,5vw,3.8rem);font-weight:800}
+.contact h2 span{color:var(--yellow)}
+.cbox{display:grid;gap:14px}
+.crow{border:2px solid var(--paper);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.crow .v{font-family:var(--mono);font-size:.95rem;user-select:all;word-break:break-all}
+.crow button{font:inherit;font-weight:600;background:var(--yellow);color:#151515;border:0;padding:6px 14px;cursor:pointer}
+.crow a{color:var(--paper)}
+footer{padding-block:20px;border-top:3px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:.9rem}
+
+@media (max-width:880px){
+  .hero .wrap,.about,.lfae-grid,.two,.contact .wrap{grid-template-columns:minmax(0,1fr)}
+  .comp{justify-self:center;max-width:380px}
+  .projects{grid-template-columns:minmax(0,1fr)}
+  .proj{border-right:0!important;border-bottom:3px solid var(--line)!important}
+  .proj:last-child{border-bottom:0!important}
+  .bar .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fig:nth-child(3){border-left:0;padding-left:0}
+  .fig:nth-child(n+3){border-top:3px solid var(--line)}
+}
+@media (max-width:520px){
+  .tl-row{grid-template-columns:minmax(0,1fr);gap:2px}
+  nav ul{gap:12px}
+  .head{grid-template-columns:minmax(0,1fr)}
+  .head .mono{grid-column:1}
+  .shape{width:40px;height:40px}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark"><i></i><i></i><i></i>&nbsp;GIVG</div>
+    <nav aria-label="Secciones">
+      <ul>
+        <li><a href="#sobre">Sobre mí</a></li>
+        <li><a href="#lfae">LFAE</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#trayectoria">Trayectoria</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="mono">Tizayuca, Hidalgo · UAM Azcapotzalco</p>
+      <h1><span>Gabriela</span><span class="r">Vera</span><span>Garfias</span></h1>
+      <div class="roles">
+        <span>Ingeniera física</span><span>Divulgadora científica</span><span>Gestora científico-cultural</span>
+      </div>
+      <p class="lead">Diseño experiencias donde la física, el arte y la cultura se encuentran, para que públicos diversos reconozcan la ciencia como algo propio.</p>
+    </div>
+    <div class="comp" aria-hidden="true">
+      <svg viewBox="0 0 600 600" role="img">
+        <rect x="70" y="330" width="210" height="210" fill="var(--red)"/>
+        <polygon points="330,70 560,470 100,470" fill="var(--yellow)" opacity=".95"/>
+        <g class="spin">
+          <circle cx="300" cy="250" r="150" fill="var(--blue)"/>
+          <circle cx="300" cy="250" r="104" fill="none" stroke="var(--paper)" stroke-width="10"/>
+          <circle cx="300" cy="250" r="58" fill="var(--ink)"/>
+          <circle cx="300" cy="250" r="22" fill="var(--yellow)"/>
+          <line x1="140" y1="250" x2="460" y2="250" stroke="var(--paper)" stroke-width="3"/>
+        </g>
+        <line x1="40" y1="560" x2="560" y2="40" stroke="var(--ink)" stroke-width="6"/>
+        <line x1="40" y1="120" x2="330" y2="580" stroke="var(--ink)" stroke-width="2"/>
+        <circle cx="500" cy="530" r="34" fill="none" stroke="var(--ink)" stroke-width="6"/>
+        <circle cx="96" cy="96" r="18" fill="var(--red)"/>
+        <g fill="var(--ink)">
+          <rect x="430" y="70" width="18" height="18"/><rect x="466" y="70" width="18" height="18"/>
+          <rect x="448" y="88" width="18" height="18"/><rect x="484" y="88" width="18" height="18"/>
+          <rect x="430" y="106" width="18" height="18"/><rect x="466" y="106" width="18" height="18"/>
+        </g>
+        <path d="M60 470 Q 140 400 200 450 T 330 430" fill="none" stroke="var(--ink)" stroke-width="4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="fig"><b>10</b><span>años de divulgación continua (2016–2026)</span></div>
+    <div class="fig"><b>100+</b><span>charlas y talleres impartidos</span></div>
+    <div class="fig"><b>20+</b><span>congresos nacionales e internacionales</span></div>
+    <div class="fig"><b>4</b><span>ediciones del Festival Sihuatl</span></div>
+  </div>
+</div>
+
+<section class="block" id="sobre">
+  <div class="wrap">
+    <div class="head"><div class="shape s"></div><h2>Sobre mí</h2><p class="mono">Ciencia · arte · cultura</p></div>
+    <div class="about">
+      <div>
+        <p>Soy ingeniera física por la Universidad Autónoma Metropolitana, Unidad Azcapotzalco, y curso el posgrado en Procesos Culturales para el Diseño y el Arte. Mi investigación estudia los eclipses solares desde una mirada interdisciplinaria de la comunicación de la ciencia.</p>
+        <p>Desde 2016 organizo observaciones astronómicas, mediaciones en museos, ferias, talleres en escuelas y festivales comunitarios. Trabajo con infancias, juventudes y comunidades, con perspectiva de género, inclusión y acceso a la cultura.</p>
+        <p>Me formé como becaria en el Museo de la Luz de la UNAM, fui mentora en la iniciativa Iluminando el Futuro de la IEEE y soy integrante de Mujeres Hacia el Espacio de la Agencia Espacial Mexicana.</p>
+      </div>
+      <div class="quote"><p>La ciencia se apropia cuando llega en un lenguaje cercano y culturalmente significativo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block lfae" id="lfae">
+  <div class="wrap">
+    <div class="head"><div class="shape c"></div><h2>Laboratorio de Física Aplicada a la Existencia</h2><p class="mono">LFAE · UAM Azcapotzalco · Coordinación</p></div>
+    <div class="lfae-grid">
+      <p>El LFAE es un proyecto interdisciplinario que integra ciencia, arte, filosofía, historia y cultura. Llevamos la física a los patios, los museos, las bibliotecas y las esculturas del campus, y la convertimos en una experiencia compartida.</p>
+      <ul>
+        <li><span>Veladas Escultóricas y Astronómicas</span><span>2024 – hoy</span></li>
+        <li><span>Proyecto Eclipse Solar 2023–2024</span><span>2023 – 2024</span></li>
+        <li><span>Semana Mundial del Espacio</span><span>anual</span></li>
+        <li><span>Club de lectura «Historias de aquí y ninguna parte»</span><span>2023 – hoy</span></li>
+        <li><span>Maridajes científicos</span><span>2024 – hoy</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="proyectos">
+  <div class="wrap">
+    <div class="head"><div class="shape t"></div><h2>Proyectos</h2><p class="mono">Selección</p></div>
+    <div class="projects">
+      <article class="proj"><div class="k"><i></i><span class="mono">2024 – hoy</span></div><h3>Veladas Escultóricas</h3><p>Observación astronómica y mediación frente a las esculturas de Felguérez, Siegmann, Rojo y otros artistas en la UAM Azcapotzalco.</p></article>
+      <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2024</span></div><h3>Eclipse Solar</h3><p>Rutas de observación del eclipse anular de 2023 y el total de 2024, con talleres en escuelas y en la UAM.</p></article>
+      <article class="proj"><div class="k"><i></i><span class="mono">2022 – hoy</span></div><h3>Festival Sihuatl</h3><p>Primer festival científico-cultural de Tizayuca, Hidalgo, por el Día Internacional de la Mujer y la Niña en la Ciencia.</p></article>
+      <article class="proj"><div class="k"><i></i><span class="mono">2021</span></div><h3>Tlahuilia</h3><p>Proyecto educativo STEM financiado por el SPIE Outreach Grant, desde los capítulos estudiantiles SPIE y Optica.</p></article>
+      <article class="proj"><div class="k"><i></i><span class="mono">2022 – 2025</span></div><h3>FILIJ en la UAM</h3><p>Sede de la Feria Internacional del Libro Infantil y Juvenil, con tendedero literario y actividades de ciencia y lectura.</p></article>
+      <article class="proj"><div class="k"><i></i><span class="mono">2023 – 2026</span></div><h3>Ciencia en el Metro</h3><p>Talleres en el Museo del Metro y «La ciencia del helado» en Metro La Raza, con Comunicación del Conocimiento UAM.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="trayectoria">
+  <div class="wrap">
+    <div class="head"><div class="shape c"></div><h2>Trayectoria</h2><p class="mono">2016 – 2026</p></div>
+    <div class="tl">
+      <div class="tl-row"><span class="y">2016</span><div><b>Primeras actividades de divulgación</b><p>Semana Mundial del Espacio en la UAM Azcapotzalco y talleres en Villa de los Niños.</p></div></div>
+      <div class="tl-row"><span class="y">2017–19</span><div><b>Congresos y noches de estrellas</b><p>Ponencias en el Congreso Nacional de Física y participación en la Noche de las Estrellas.</p></div></div>
+      <div class="tl-row hl"><span class="y">2020–21</span><div><b>Fundación de capítulos SPIE y Optica</b><p>Presidenta fundadora. Contenidos para el Día Internacional de la Luz, Nodo México (IF-UNAM, UNESCO).</p></div></div>
+      <div class="tl-row"><span class="y">2021–23</span><div><b>Becaria del Museo de la Luz, DGDC-UNAM</b><p>Recorridos guiados y mediaciones teatrales de arte y ciencia.</p></div></div>
+      <div class="tl-row hl"><span class="y">2022</span><div><b>Festival Sihuatl</b><p>Primer evento científico de la región de Tizayuca, Hidalgo.</p></div></div>
+      <div class="tl-row"><span class="y">2023</span><div><b>Posgrado y Proyecto Eclipse</b><p>Ingreso al posgrado en Procesos Culturales para el Diseño y el Arte.</p></div></div>
+      <div class="tl-row hl"><span class="y">2024</span><div><b>Veladas Escultóricas y eclipse total</b><p>Inicio de la serie en la UAM y observación del eclipse solar total.</p></div></div>
+      <div class="tl-row"><span class="y">2025–26</span><div><b>Redes y congresos de divulgación</b><p>Red POP, Ruta CPC, Falling Walls y Encuentro Nacional de Divulgación de la Ciencia.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="reconocimientos">
+  <div class="wrap two">
+    <div>
+      <h3 class="sub"><i class="shape s" style="width:20px;height:20px"></i>Reconocimientos</h3>
+      <ul class="list">
+        <li><span class="y">2025</span><span>Mención honorífica, Mi Tesis en 3 Minutos, UAM</span></li>
+        <li><span class="y">2023</span><span>Diploma a la Investigación, UAM Azcapotzalco</span></li>
+        <li><span class="y">2022</span><span>SPIE Optics and Photonics Education Scholarship</span></li>
+        <li><span class="y">2021</span><span>SPIE Outreach Grant para el proyecto Tlahuilia</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="sub"><i class="shape t" style="width:20px;height:20px"></i>Formación</h3>
+      <ul class="list">
+        <li><span class="y">2023–</span><span>Posgrado en Procesos Culturales para el Diseño y el Arte, UAM Azcapotzalco</span></li>
+        <li><span class="y">2024</span><span>Diplomado en Mediación Lectora, FCE</span></li>
+        <li><span class="y">2022</span><span>Diplomado La cultura en el centro de la economía sostenible, Secretaría de Cultura</span></li>
+        <li><span class="y">2016–22</span><span>Ingeniería Física, UAM Azcapotzalco</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <h2>Hagamos ciencia <span>juntas.</span></h2>
+    <div class="cbox">
+      <div class="crow"><span class="v" id="mail">givg@azc.uam.mx</span><button type="button" id="copy">Copiar</button></div>
+      <div class="crow"><span>Laboratorio de Física Aplicada a la Existencia</span><a href="https://www.facebook.com/LFAE.UAMA" target="_blank" rel="noopener">Facebook ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Gabriela Isabel Vera Garfias</span><span>Hecho con círculos, cuadrados y triángulos.</span></div></footer>
+
+<script>
+document.getElementById('copy').addEventListener('click',function(){
+  var b=this,t=document.getElementById('mail').textContent;
+  var done=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1600)};
+  try{navigator.clipboard.writeText(t).then(done,function(){sel()})}catch(e){sel()}
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selecciona y copia'}
+});
+</script>
