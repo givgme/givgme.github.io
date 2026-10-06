@@ -22,3 +22,4 @@ Cada carpeta es un QR impreso. La dirección `givgme.github.io/q/<código>/` no 
 | cyad-pos | Banner CyAD · posgrados | https://cyadposgrados.azc.uam.mx/ |
 | uam-cyad | Banner CyAD · UAM Azcapotzalco | https://www.azc.uam.mx/ |
 | eclipse | Banner Umbrhalia · «¿Viviste un eclipse?» | formulario «Cuéntanos tu eclipse» (cuenta lfae.physicart@gmail.com) |
+| memorias | Banner Umbrhalia · Memorias de la Umbra | https://givgme.github.io/memorias-de-la-umbra/ |
