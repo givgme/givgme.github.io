@@ -24,3 +24,6 @@ Cada carpeta es un QR impreso. La dirección `givgme.github.io/q/<código>/` no 
 | eclipse | Banner Umbrhalia · «¿Viviste un eclipse?» | formulario «Cuéntanos tu eclipse» (cuenta lfae.physicart@gmail.com) |
 | memorias | Banner Umbrhalia · Memorias de la Umbra | https://givgme.github.io/memorias-de-la-umbra/ |
 | sumate | Banner LFAE B · Súmate | formulario «Súmate» (hoy: /lfae/) |
+| info-cbi | Banner cbi · ¿Quieres saber más? | formulario (hoy: sitio de la división) |
+| info-csh | Banner csh · ¿Quieres saber más? | formulario (hoy: sitio de la división) |
+| info-cyad | Banner cyad · ¿Quieres saber más? | formulario (hoy: sitio de la división) |
